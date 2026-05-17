@@ -76,3 +76,76 @@ console.log('TODO: Replace placeholder images with actual photos');
 console.log('TODO: Update WhatsApp number: 351000000000');
 console.log('TODO: Add actual Booking.com property URL');
 console.log('TODO: Add Google Maps embed for location section');
+
+// Lightbox functionality
+const lightbox = document.getElementById('lightbox');
+const lightboxImage = document.getElementById('lightbox-image');
+const lightboxOverlay = document.querySelector('.lightbox-overlay');
+const lightboxClose = document.querySelector('.lightbox-close');
+const lightboxPrev = document.querySelector('.lightbox-prev');
+const lightboxNext = document.querySelector('.lightbox-next');
+const galleryPhotos = document.querySelectorAll('.gallery-photo');
+let currentPhotoIndex = 0;
+
+// Open lightbox when clicking on gallery photos
+galleryPhotos.forEach((photo, index) => {
+    photo.addEventListener('click', () => {
+        currentPhotoIndex = index;
+        openLightbox(photo.src, photo.alt);
+    });
+});
+
+function openLightbox(src, alt) {
+    lightboxImage.src = src;
+    lightboxImage.alt = alt;
+    lightbox.classList.add('active');
+    document.body.style.overflow = 'hidden'; // Prevent scrolling
+}
+
+function closeLightbox() {
+    lightbox.classList.remove('active');
+    document.body.style.overflow = ''; // Re-enable scrolling
+}
+
+function showNextPhoto() {
+    currentPhotoIndex = (currentPhotoIndex + 1) % galleryPhotos.length;
+    lightboxImage.src = galleryPhotos[currentPhotoIndex].src;
+    lightboxImage.alt = galleryPhotos[currentPhotoIndex].alt;
+}
+
+function showPrevPhoto() {
+    currentPhotoIndex = (currentPhotoIndex - 1 + galleryPhotos.length) % galleryPhotos.length;
+    lightboxImage.src = galleryPhotos[currentPhotoIndex].src;
+    lightboxImage.alt = galleryPhotos[currentPhotoIndex].alt;
+}
+
+// Close lightbox when clicking X button
+lightboxClose.addEventListener('click', closeLightbox);
+
+// Close lightbox when clicking overlay
+lightboxOverlay.addEventListener('click', closeLightbox);
+
+// Navigate to next photo
+lightboxNext.addEventListener('click', (e) => {
+    e.stopPropagation();
+    showNextPhoto();
+});
+
+// Navigate to previous photo
+lightboxPrev.addEventListener('click', (e) => {
+    e.stopPropagation();
+    showPrevPhoto();
+});
+
+// Close lightbox when pressing Escape key
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && lightbox.classList.contains('active')) {
+        closeLightbox();
+    }
+    if (e.key === 'ArrowRight' && lightbox.classList.contains('active')) {
+        showNextPhoto();
+    }
+    if (e.key === 'ArrowLeft' && lightbox.classList.contains('active')) {
+        showPrevPhoto();
+    }
+});
