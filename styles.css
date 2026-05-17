@@ -102,8 +102,8 @@ body {
 /* Hero Section */
 .hero {
     position: relative;
-    height: 100vh;
-    min-height: 700px;
+    height: 85vh;
+    min-height: 550px;
     background: linear-gradient(135deg, var(--navy-dark) 0%, var(--navy-medium) 50%, var(--navy-light) 100%);
     display: flex;
     align-items: center;
@@ -676,7 +676,7 @@ body {
 
 .cta-title {
     font-family: 'Playfair Display', serif;
-    font-size: 3.5rem;
+    font-size: 2.5rem;
     font-weight: 700;
     margin-bottom: 1.5rem;
     background: linear-gradient(135deg, #ffffff 0%, var(--gold-accent) 100%);
@@ -730,7 +730,7 @@ body {
 .footer {
     background: var(--navy-dark);
     color: var(--text-white);
-    padding: 4rem 3rem;
+    padding: 2rem 3rem;
 }
 
 .footer-content {
@@ -741,9 +741,9 @@ body {
 
 .footer-logo {
     font-family: 'Playfair Display', serif;
-    font-size: 1.75rem;
+    font-size: 1.25rem;
     font-weight: 700;
-    margin-bottom: 0.75rem;
+    margin-bottom: 0.5rem;
     background: linear-gradient(135deg, #ffffff 0%, var(--gold-accent) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -752,7 +752,7 @@ body {
 
 .footer-text {
     color: var(--text-light);
-    font-size: 1rem;
+    font-size: 0.875rem;
     font-weight: 300;
     letter-spacing: 0.5px;
 }
